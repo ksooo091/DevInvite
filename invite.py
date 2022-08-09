@@ -68,3 +68,20 @@ def vpninvite(vpnUsername, vpnUserpw):
     print('vpn 생성 완료')
     driver.close()
     driver.quit()
+
+
+def redashinvite():
+    driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
+    driver.implicitly_wait(2)
+    driver.get(urllist.redash)
+    driver.find_element(By.NAME, "inputEmail").send_keys("")
+    driver.find_element(By.NAME, "inputPassword").send_keys("" + Keys.RETURN)
+    driver.implicitly_wait(5)
+    driver.get(urllist.redashInvite)
+    driver.find_element(By.XPATH, "//span[contains(text(),'New User')]").click()
+    driver.find_element(By.NAME, "name").send_keys("")
+    driver.find_element(By.NAME, "email").send_keys("" + Keys.RETURN)
+    driver.implicitly_wait(3)
+    print('redash 초대 완료 완료')
+    driver.close()
+    driver.quit()
